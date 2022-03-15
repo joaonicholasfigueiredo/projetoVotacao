@@ -2,33 +2,44 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package senai.com.br.funcionalidades;
+package src.senai.com.br.funcionalidades;
 
 import java.util.ArrayList;
+import java.util.Observable;
+
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import static src.senai.com.br.funcionalidades.Registro_candidato_nicholas.listaDeCandidatos;
 
 /**
  *
  * @author aluno
  */
-public class Votacao_joao_nicholas extends javax.swing.JFrame {
+public class Votacao_joao_nicholas extends javax.swing.JFrame{
 
-  
-    /**
-     * Creates new form Votacao_joao_nicholas
-     * 
-     * 
-     * 
-     */
-    
-    public static void  Armazenar(){
-        
+    public void update(ArrayList<Registro_candidato_nicholas.RegistroCandidato> listaDeCandidatosAtualizado) {
+        atualizarTabelaDadosDeCandidato(listaDeCandidatosAtualizado);
     }
-        
+
+    public void atualizarTabelaDadosDeCandidato(ArrayList<Registro_candidato_nicholas.RegistroCandidato> listaDeCandidatosAtualizado) {
+        DefaultTableModel model = (DefaultTableModel) jTableListaDeCandidatos2.getModel();
+
+        //limpar tela
+        for (int i = model.getRowCount()-1; i >= 0; i--) {
+            model.removeRow(0);
+        }
+
+        //iterar na lista de candidatos cadastrados
+        for (Registro_candidato_nicholas.RegistroCandidato registroCandidato : listaDeCandidatosAtualizado) {
+            model.addRow(registroCandidato.getDadosComoVetorString());
+        }
+
+    }
     
     
+  
+
     
     public Votacao_joao_nicholas() {
         initComponents();
@@ -72,7 +83,6 @@ public class Votacao_joao_nicholas extends javax.swing.JFrame {
         jButtonVotarEmBranco = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableListaDeCandidatos2 = new javax.swing.JTable();
-        jButtonListarCandidatos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -157,13 +167,6 @@ public class Votacao_joao_nicholas extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTableListaDeCandidatos2);
 
-        jButtonListarCandidatos.setText("Listar Candidatos");
-        jButtonListarCandidatos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonListarCandidatosActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -181,10 +184,10 @@ public class Votacao_joao_nicholas extends javax.swing.JFrame {
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel3)
-                                    .addComponent(jButtonVotarNoCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jButtonVotarNoCandidato))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(8, 8, 8)
+                                        .addGap(0, 0, 0)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                 .addComponent(jTextFieldNumeroEleitoral, javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,9 +201,8 @@ public class Votacao_joao_nicholas extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonIrParaCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                    .addComponent(jButtonIrParaApuracao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonListarCandidatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonIrParaCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonIrParaApuracao, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))
                 .addGap(33, 33, 33))
         );
         jPanel1Layout.setVerticalGroup(
@@ -212,16 +214,13 @@ public class Votacao_joao_nicholas extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jTextFieldNumeroEleitoral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jTextFieldNomeCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jButtonListarCandidatos))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jTextFieldNumeroEleitoral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jTextFieldNomeCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
@@ -278,35 +277,14 @@ public class Votacao_joao_nicholas extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonVotarNoCandidatoActionPerformed
 
-    private void jButtonListarCandidatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarCandidatosActionPerformed
-        // TODO add your handling code here:
-        try {
-            
-           DefaultTableModel model = (DefaultTableModel) jTableListaDeCandidatos2.getModel();
-           model.setRowCount(0);
-           
-           String vetString[] = new String[3];
-           
-//           for(int i = 0; i < listaArrayCandidatos.size(); i++){
-//               vetString[0] = listaArrayCandidatos.listIterator(i).toString();
-//               model.addRow(vetString);
-//               
-//           }
-
-
-        } catch (Exception erro) {
-            JOptionPane.showMessageDialog(this, erro.getMessage());
-        }
-    }//GEN-LAST:event_jButtonListarCandidatosActionPerformed
-
     private void jButtonIrParaCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIrParaCadastroActionPerformed
         // TODO add your handling code here:
-        new Registro_candidato_nicholas().setVisible(true);
+        
     }//GEN-LAST:event_jButtonIrParaCadastroActionPerformed
 
     private void jButtonIrParaApuracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIrParaApuracaoActionPerformed
         // TODO add your handling code here:
-        new Resultado_joao_nicholas().setVisible(true);
+        
     }//GEN-LAST:event_jButtonIrParaApuracaoActionPerformed
 
     /**
@@ -348,7 +326,6 @@ public class Votacao_joao_nicholas extends javax.swing.JFrame {
     private javax.swing.JButton jButtonIrParaApuracao;
     private javax.swing.JButton jButtonIrParaCadastro;
     private javax.swing.JButton jButtonLimpar;
-    private javax.swing.JButton jButtonListarCandidatos;
     private javax.swing.JButton jButtonVotarEmBranco;
     private javax.swing.JButton jButtonVotarNoCandidato;
     private javax.swing.JLabel jLabel1;

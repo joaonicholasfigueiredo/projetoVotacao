@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package senai.com.br.funcionalidades;
+package src.senai.com.br.funcionalidades;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -18,6 +18,7 @@ public class Registro_candidato_nicholas extends javax.swing.JFrame {
     //Inicio instanciação métodos estaticos
     static Registro_candidato_nicholas cadastroDeCandidatos = new Registro_candidato_nicholas();
     public static ArrayList<RegistroCandidato> listaDeCandidatos = new ArrayList<>();
+    static Votacao_joao_nicholas votacaoJoaoNicholas;
     //Fim instanciação de métodos estaticos
 
     public class RegistroCandidato {
@@ -90,7 +91,10 @@ public class Registro_candidato_nicholas extends javax.swing.JFrame {
         for (RegistroCandidato registroCandidato : listaDeCandidatos) {
             model.addRow(registroCandidato.getDadosComoVetorString());
         }
-
+        
+        //atualiza a tabela de votação Joao Nicholas
+        votacaoJoaoNicholas.update(listaDeCandidatos);
+        
     }
 
     public Registro_candidato_nicholas() {
@@ -124,7 +128,7 @@ public class Registro_candidato_nicholas extends javax.swing.JFrame {
         jTableListaDeCandidatosCadastrados = new javax.swing.JTable();
         jButtonCadastrarCandidato = new javax.swing.JButton();
         jButtonLimparCampos = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jButtonVotacao = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -197,7 +201,12 @@ public class Registro_candidato_nicholas extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Ir para Votação");
+        jButtonVotacao.setText("Ir para Votação");
+        jButtonVotacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVotacaoActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Ir para Apuração");
 
@@ -233,7 +242,7 @@ public class Registro_candidato_nicholas extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonVotacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(14, 14, 14))
         );
         jPanel1Layout.setVerticalGroup(
@@ -262,7 +271,7 @@ public class Registro_candidato_nicholas extends javax.swing.JFrame {
                             .addComponent(jButtonLimparCampos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(31, 31, 31)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonVotacao, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(28, Short.MAX_VALUE))
@@ -309,6 +318,11 @@ public class Registro_candidato_nicholas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonCadastrarCandidatoActionPerformed
 
+    private void jButtonVotacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVotacaoActionPerformed
+        // TODO add your handling code here:
+        votacaoJoaoNicholas.setVisible(true);
+    }//GEN-LAST:event_jButtonVotacaoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -335,20 +349,25 @@ public class Registro_candidato_nicholas extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Registro_candidato_nicholas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Registro_candidato_nicholas().setVisible(true);
+               Registro_candidato_nicholas registroCandidatoNicholas = new Registro_candidato_nicholas();
+               
+               votacaoJoaoNicholas = new Votacao_joao_nicholas();
+               registroCandidatoNicholas.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButtonCadastrarCandidato;
     private javax.swing.JButton jButtonLimparCampos;
+    private javax.swing.JButton jButtonVotacao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
