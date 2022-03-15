@@ -301,6 +301,8 @@ public class Registro_candidato_nicholas extends javax.swing.JFrame {
             listaDeCandidatos.add(regCandidato);
 
             atualizarTabelaDadosDeCandidato();
+            
+            limparTela();
 
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage());
